@@ -182,7 +182,7 @@ if __name__ == "__main__":
     logger.info(f"🚀 MCP server started on port {os.getenv('PORT', 8080)}")
     # Could also use 'sse' transport, host="0.0.0.0" required for Cloud Run.
     asyncio.run(
-        mcp.run_async(
+        mcp.run_sse_async(
             transport="streamable-http",
             host="0.0.0.0",
             port=os.getenv("PORT", 8080),
