@@ -183,7 +183,7 @@ if __name__ == "__main__":
     # Could also use 'sse' transport, host="0.0.0.0" required for Cloud Run.
     port = int(os.getenv("PORT", 8080))
     asyncio.run(
-        mcp.run_sse_async(
+        mcp.run_async(
             transport="streamable-http",
             host="0.0.0.0",
             port=port,
