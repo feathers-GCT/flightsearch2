@@ -2,7 +2,7 @@ import os
 import json
 import time
 from typing import Optional
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 import httpx
 import asyncio
 import logging
@@ -181,10 +181,11 @@ async def search_flights(
 if __name__ == "__main__":
     logger.info(f"🚀 MCP server started on port {os.getenv('PORT', 8080)}")
     # Could also use 'sse' transport, host="0.0.0.0" required for Cloud Run.
+    port = int(os.getenv("PORT", 8080))
     asyncio.run(
         mcp.run_sse_async(
             transport="streamable-http",
             host="0.0.0.0",
-            port=os.getenv("PORT", 8080),
+            port=port,
         )
     )
